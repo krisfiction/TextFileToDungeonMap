@@ -7,8 +7,9 @@ namespace TextFileToDungeonMap
 {
     class Map
     {
-        private readonly char Floor = '.';
-
+        //todo dot '·' vs period '.'  
+        private readonly char Floor = '·';
+        private readonly char Door = '+';
 
         private const int MapSizeX = 110;
         private const int MapSizeY = 35;
@@ -26,7 +27,7 @@ namespace TextFileToDungeonMap
             int Column = 0;
 
 
-            StreamReader reader = new StreamReader(@"Maps\Map1.txt");
+            StreamReader reader = new StreamReader(@"Maps\Map2.txt");
             while (reader.EndOfStream == false)
             {
                 string line = reader.ReadLine();
@@ -34,7 +35,7 @@ namespace TextFileToDungeonMap
 
                 for (int i = 0; i < chars.Length; i++)
                 {
-                    if (chars[i] == '.' || chars[i] == '+')
+                    if (chars[i] == Floor || chars[i] == Door)
                     {
                         GameMap[i, Column] = new Tile(i, Column, chars[i], true);
                     }
